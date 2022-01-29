@@ -1,0 +1,22 @@
+{
+  "name": "juju-wedding-password-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "type": "module",
+  "author": "mendoj",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
