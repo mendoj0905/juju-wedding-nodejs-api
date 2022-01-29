@@ -1,6 +1,6 @@
 # Wedding Guest Api Nodejs
 
-Simple CRUD REST api to manage wedding guest and check website password for our [website](https://jujubaewedding.com) using GatsbyJS framework - [repo](https://github.com/mendoj0905/juju-wedding-website). Using MongoDB, Express, and NodeJS. 
+Simple CRUD REST api to manage wedding guest and check website password. This for our [wedding website](https://jujubaewedding.com) using GatsbyJS framework - [repo](https://github.com/mendoj0905/juju-wedding-website). Technology I'm using are MongoDB, Express, and NodeJS. 
 
 ## Setup
 
