@@ -1,44 +1,44 @@
-import Guest from './guestModel.js';
+import GuestDAL from './guestDAL.js';
+
+const guestDAL = new GuestDAL();
 
 export default class GuestService {
 
   async getAll() {
     try {
-      return await Guest.find({});
-    } catch(e) {
+      console.log(`Getting all guests`);
+      return await guestDAL.getAll();
+    } catch (e) {
       console.error(e);
-    }
+    } 
   }
 
-  async getByEmail(email) {
+  async add(guestToAdd) {
+
     try {
-      return await Guest.findOne({ email });
+      const { firstName, lastName, email } = guestToAdd;
+      const existingEmail = await guestDAL.getByEmail(email);
+      
+      if(existingEmail) {
+        const errMessage = `Email already exist - ${email}`;
+        throw new Error(errMessage);
+      }
+
+      console.log(`Added guest - ${firstName} ${lastName}, email - ${email}`);
+      const addedGuest = await guestDAL.add(guestToAdd);
+      return addedGuest;
+
     } catch (e) {
       console.error(e);
     }
   }
 
-  async add(guest) {
-    try {
-      return await Guest.create(guest);
-    } catch(e) {
-      console.error(e);
-    }
-  }
-
+  // Check guest exist
   async remove(email) {
-    try {
-      return Guest.findOneAndDelete({ email });
-    } catch(e) {
-      console.error(e);
-    }
-  }
-
-  async update(guest) {
-    try { 
-      return Guest.findOneAndUpdate({ email }, guest);
-    } catch (e) {
-      console.error(e);
-    }
+    const deleted_guest = await guestDAL.remove(email);
+    const { firstName, lastName } = deleted_guest;
+    console.log(`Removed guest - ${firstName} ${lastName}, email - ${email}`);
+    return deleted_guest;
+    
   }
 }
