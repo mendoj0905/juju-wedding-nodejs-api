@@ -1,4 +1,4 @@
-import GuestService from '../services/GuestService.js';
+import GuestService from './guestService.js';
 
 const guestService = new GuestService();
 

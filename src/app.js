@@ -2,8 +2,8 @@ import express from 'express'
 import BodyParser from 'body-parser';
 import connectToDb from './db/connect.js';
 
-import PasswordRoutes from './routes/PasswordRoutes.js';
-import GuestRoute from './routes/GuestRoute.js';
+import PasswordRoutes from './components/otherFeature/PasswordRoutes.js';
+import GuestRoute from './components/guests/guestRoute.js';
 
 connectToDb()
 

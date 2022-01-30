@@ -1,4 +1,4 @@
-import Guest from '../models/GuestModel.js';
+import Guest from './guestModel.js';
 
 export default class GuestService {
 

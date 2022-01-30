@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { GuestController } from '../controllers/GuestController.js';
+import { GuestController } from './guestController.js';
 
 const router = Router();
 const guestController = new GuestController();
