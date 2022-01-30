@@ -23,3 +23,33 @@ PORT=4000
 ```
 npm start
 ```
+
+## Test Container 
+### Build Image
+```
+docker build --pull --rm -f Dockerfile -t image-name:tags .
+```
+### docker-compose.yaml 
+```
+version: "3.9"
+services:
+  wedding-guest-api:
+    # build: .
+    ports:
+      - "4000:4000"
+    image: wedding-guest-api:2022.1
+    command: "dumb-init node src/server.js"
+    environment:
+      - DB_URL=url
+      - DB_USERNAME=username
+      - DB_PASSWORD=password
+      - SITE_PASSWORD=password
+```
+
+
+## TO DO
+- Work on Dockerfile and build image for k8s deployment
+- Session cookie/token for FE
+- Script to build and deploy... maybe experiment with kubernetes client libs (Python or Nodejs)...
+- Add unit test
+- Use logging library
