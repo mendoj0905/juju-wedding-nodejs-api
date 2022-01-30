@@ -11,7 +11,11 @@ export class GuestController {
 
   async add(req, res) {
     const addedGuest = await guestService.add(req.body)
-    res.json(addedGuest);
+    if (addedGuest) {
+      res.json(addedGuest);
+    } else {
+      res.json({ error: "Uh oh! Something went wrong!"})
+    }
 
   }
 
