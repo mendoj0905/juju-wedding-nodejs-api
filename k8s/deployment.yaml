@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wedding-guest-api-deployment
+  namespace: juju-wedding
+  labels:
+    app: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: wedding-guest-api
+        image: jujubeee314/wedding-guest-api:2022.1
+        imagePullPolicy: Always
+        resources:
+        ports:
+        - containerPort: 4000
+        env:
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              key: DB_URL
+              name: juju-wedding-secret
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: DB_USERNAME
+              name: juju-wedding-secret
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: DB_PASSWORD
+              name: juju-wedding-secret
+        - name: SITE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: SITE_PASSWORD
+              name: juju-wedding-secret
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: JWT_SECRET
+              name: juju-wedding-secret

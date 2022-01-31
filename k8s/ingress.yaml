@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wedding-guest-api-ingress
+  namespace: juju-wedding
+spec:
+  rules:
+    - host: wedding.justinmendoza.net
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: wedding-guest-api-service
+                port:
+                  number: 4000

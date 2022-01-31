@@ -14,9 +14,10 @@ npm install
 DB_URL="url"
 DB_USERNAME="user"
 DB_PASSWORD="pass"
+JWT_SECRET="secret"
 
 SITE_PASSWORD="pass"
-PORT=4000
+PORT=####
 ```
 
 3. Command to start server.
@@ -33,7 +34,7 @@ docker build --pull --rm -f Dockerfile -t image-name:tags .
 ```
 version: "3.9"
 services:
-  wedding-guest-api:
+  api:
     # build: .
     ports:
       - "4000:4000"
@@ -44,6 +45,12 @@ services:
       - DB_USERNAME=username
       - DB_PASSWORD=password
       - SITE_PASSWORD=password
+      -JWT_SECRET=secret
+```
+### Run and stop container
+```
+docker-compose up -d
+docker-compose down
 ```
 
 
