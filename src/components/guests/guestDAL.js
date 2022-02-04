@@ -2,7 +2,7 @@ import Guest from './guestModel.js';
 
 export default class GuestDAL {
 
-  async getAll() {
+  static async getAll() {
     try {
       return await Guest.find({});
     } catch(e) {
@@ -10,7 +10,7 @@ export default class GuestDAL {
     }
   }
 
-  async getByEmail(email) {
+  static async getByEmail(email) {
     try {
       return await Guest.findOne({ email });
     } catch (e) {
@@ -18,7 +18,7 @@ export default class GuestDAL {
     }
   }
 
-  async add(guest) {
+  static async add(guest) {
     try {
       return await Guest.create(guest);
     } catch(e) {
@@ -26,7 +26,7 @@ export default class GuestDAL {
     }
   }
 
-  async remove(email) {
+  static async remove(email) {
     try {
       return Guest.findOneAndDelete({ email });
     } catch(e) {
@@ -34,7 +34,7 @@ export default class GuestDAL {
     }
   }
 
-  async update(guest) {
+  static async update(guest) {
     try { 
       return Guest.findOneAndUpdate({ email }, guest);
     } catch (e) {

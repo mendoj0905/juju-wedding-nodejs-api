@@ -1,10 +1,8 @@
-import GuestDAL from './guestDAL.js';
-
-const guestDAL = new GuestDAL();
+import guestDAL from './guestDAL.js';
 
 export default class GuestService {
 
-  async getAll() {
+  static async getAll() {
     try {
       console.log(`Getting all guests`);
       return await guestDAL.getAll();
@@ -13,7 +11,7 @@ export default class GuestService {
     } 
   }
 
-  async add(guestToAdd) {
+  static async add(guestToAdd) {
 
     try {
       const { firstName, lastName, email } = guestToAdd;
@@ -34,7 +32,7 @@ export default class GuestService {
   }
 
   // Check guest exist
-  async remove(email) {
+  static async remove(email) {
     const deleted_guest = await guestDAL.remove(email);
     const { firstName, lastName } = deleted_guest;
     console.log(`Removed guest - ${firstName} ${lastName}, email - ${email}`);

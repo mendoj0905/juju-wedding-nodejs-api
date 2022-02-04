@@ -1,15 +1,13 @@
-import GuestService from './guestService.js';
+import guestService from './guestService.js';
 
-const guestService = new GuestService();
+export default class GuestController {
 
-export class GuestController {
-
-  async getAll(req, res) {
+  static async getAll(req, res) {
     const guests = await guestService.getAll();
     res.json(guests);
   }
 
-  async add(req, res) {
+  static async add(req, res) {
     const addedGuest = await guestService.add(req.body)
     if (addedGuest) {
       res.json(addedGuest);
@@ -19,7 +17,7 @@ export class GuestController {
 
   }
 
-  async remove(req, res) {
+  static async remove(req, res) {
     const deleted_guest = await guestService.remove(req.body.email);
     res.json(deleted_guest);
   }
