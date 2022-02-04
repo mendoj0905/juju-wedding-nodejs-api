@@ -22,8 +22,3 @@ export default class WebPassController {
   }
 
 }
-
-// function decodePassword(password) {
-//   let bufferObj = Buffer.from(password, "base64");
-//   return bufferObj.toString("utf-8");
-// }

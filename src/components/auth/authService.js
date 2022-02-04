@@ -30,6 +30,13 @@ export default class AuthService {
   static async createUser(user) {
     try {
       const { username, password } = user;
+      const existingUsername = await User.get(username);
+      
+      if (existingUsername) {
+        const errMessage = `Username already exist - ${username}`;
+        throw new Error(errMessage);
+      }
+
       const hash = await PasswordUtil.hashPassword(password);
       return await User.create({ username, hash });
     } catch(e) {

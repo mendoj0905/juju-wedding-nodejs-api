@@ -11,6 +11,11 @@ export default class AuthController {
 
   static async createUser(req, res) {
     const { username } = await AuthService.createUser(req.body);
-    res.json({username});
+    if (username) {
+      res.json({username});
+    } else {
+      res.json({ message: `Username exists.`})
+    }
+    
   }
 }
