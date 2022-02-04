@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wedding-guest-api-com
+  namespace: juju-wedding
+spec:
+  secretName: wedding-guest-api-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: api.wedding.justinmendoza.net
+  dnsNames:
+  - api.wedding.justinmendoza.net

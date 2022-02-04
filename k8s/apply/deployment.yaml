@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: wedding-guest-api-deployment
   namespace: juju-wedding
-  labels:
-    app: node-app
 spec:
   replicas: 1
   selector:
@@ -18,11 +16,9 @@ spec:
     spec:
       containers:
       - name: wedding-guest-api
-        image: jujubeee314/wedding-guest-api:2022.1
+        image: jujubeee314/wedding-guest-api:2022.4
+        resources: 
         imagePullPolicy: Always
-        resources:
-        ports:
-        - containerPort: 4000
         env:
         - name: DB_URL
           valueFrom:

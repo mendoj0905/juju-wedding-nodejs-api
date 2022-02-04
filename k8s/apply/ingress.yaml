@@ -3,9 +3,16 @@ kind: Ingress
 metadata:
   name: wedding-guest-api-ingress
   namespace: juju-wedding
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
+  tls:
+    - hosts:
+      - api.wedding.justinmendoza.net
+      secretName: wedding-guest-api-tls
   rules:
-    - host: wedding.justinmendoza.net
+    - host: api.wedding.justinmendoza.net
       http:
         paths:
           - path: /api
