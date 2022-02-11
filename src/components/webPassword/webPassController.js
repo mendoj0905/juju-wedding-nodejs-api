@@ -1,14 +1,13 @@
-import { config } from 'dotenv';
-
-import PasswordUtil from '../../util/PasswordUtil.js';
-config();
+import WebPassService from './webPassService.js';
 
 export default class WebPassController {
 
-  static verifyPassword(req, res) {
-    const request_password = PasswordUtil.decodePassword(req.body.password)
+  static async verifyPassword(req, res) {
+    const { wedding, password } = req.body;
+    const success = await WebPassService.checkPassword(wedding, password); 
+    console.log(success);   
 
-    if (request_password == process.env.SITE_PASSWORD) {
+    if (success) {
       /**
        * Send generate random token
        * Check email exist
@@ -19,6 +18,15 @@ export default class WebPassController {
       res.json({ success: false });
     }
     
+  }
+
+  static async createPassword(req, res) {
+    const { wedding } = await WebPassService.createPassword(req.body);
+    if (wedding) {
+      res.json({ wedding });
+    } else {
+      res.json({ message: `Wedding exist.`})
+    }
   }
 
 }

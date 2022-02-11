@@ -1,4 +1,4 @@
-import WebPass from './webPassModel';
+import WebPass from './webPassModel.js';
 
 export default class WebPassDAL {
 

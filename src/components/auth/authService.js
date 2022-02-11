@@ -40,7 +40,7 @@ export default class AuthService {
       const hash = await PasswordUtil.hashPassword(password);
       return await User.create({ username, hash });
     } catch(e) {
-      console.log(e);
+      console.error(e);
     } 
   }
 
