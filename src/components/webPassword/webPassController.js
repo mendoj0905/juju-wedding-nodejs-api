@@ -5,7 +5,6 @@ export default class WebPassController {
   static async verifyPassword(req, res) {
     const { wedding, password } = req.body;
     const success = await WebPassService.checkPassword(wedding, password); 
-    console.log(success);   
 
     if (success) {
       /**

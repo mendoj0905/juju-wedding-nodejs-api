@@ -9,6 +9,7 @@ export default class WebPassService {
     
       const success = await PasswordUtil.compare(password, hash);
 
+      console.log(`Checking password - ${success}`);
       return success; 
 
     } catch (e) {
@@ -18,7 +19,7 @@ export default class WebPassService {
 
   static async createPassword(wedPass) {
     try {
-      const {wedding, password } = wedPass;
+      const { wedding, password } = wedPass;
       const existingWedding = await WebPassDAL.get(wedding);
 
       if (existingWedding) {
@@ -27,6 +28,7 @@ export default class WebPassService {
       }
 
       const hash = await PasswordUtil.hashPassword(password);
+      console.log(`Creating wedding password.`)
       return await WebPassDAL.add({ wedding, hash });
     } catch (e) {
       console.error(e);

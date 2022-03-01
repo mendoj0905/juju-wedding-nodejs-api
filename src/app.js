@@ -1,5 +1,6 @@
 import express from 'express'
 import BodyParser from 'body-parser';
+import cors from 'cors';
 import connectToDb from './db/connect.js';
 
 import AuthRoutes from './components/auth/authRoutes.js';
@@ -10,6 +11,7 @@ connectToDb()
 
 const app = express();
 
+app.use(cors())
 app.use(BodyParser.json());
 
 app.use('/api/auth', AuthRoutes);

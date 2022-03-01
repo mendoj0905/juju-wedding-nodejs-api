@@ -18,7 +18,7 @@ export default class AuthService {
           {
             expiresIn: "2h"
           });
-  
+        console.log(`Token generated.`)
         return token;
       }
     
