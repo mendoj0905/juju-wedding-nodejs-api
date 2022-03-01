@@ -1,5 +1,5 @@
 FROM arm64v8/node:lts-alpine
-RUN apk add dumb-init
+# RUN apk add dumb-init
 
 ENV NODE_ENV production
 
