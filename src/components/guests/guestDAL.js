@@ -18,27 +18,48 @@ export default class GuestDAL {
     }
   }
 
+  static async getByName(name) {
+    try {
+      return await Guest.findOne({ name })
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   static async add(guest) {
     try {
+      const { name } = guest;
+      const guestExist = await this.getByName(name);
+      if(guestExist) {
+        const errMessage = `Name already exist - ${name}`;
+        throw new Error(errMessage);
+      }      
       return await Guest.create(guest);
     } catch(e) {
       console.error(e);
     }
   }
 
-  static async remove(email) {
+  static async remove(name) {
     try {
-      return Guest.findOneAndDelete({ email });
+      return Guest.findOneAndDelete({ name });
     } catch(e) {
       console.error(e);
     }
   }
 
-  static async update(guest) {
+  static async update(name, guest) {
     try { 
-      return Guest.findOneAndUpdate({ email }, guest);
+      await Guest.findOneAndUpdate({ name }, guest);
+      return await Guest.findOne({ name });
     } catch (e) {
       console.error(e);
     }
   }
+
+  // static async deleteAll() {
+  //   try {
+  //     await Guest.dele
+  //   }
+  // }
 }

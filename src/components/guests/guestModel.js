@@ -2,17 +2,29 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 const GuestSchema = new Schema({
-  firstName: {
-    type: String,
-    required: true
-  },
-  lastName: {
+  name: {
     type: String,
     required: true
   },
   email: {
     type: String,
-    required: true
+  },
+  familyMembers: {
+    type: Array,
+  },
+  isAttending: {
+    type: Boolean,
+    default: false,
+  },
+  childrenAttending: {
+    type: Boolean,
+  },
+  children: {
+    type: Array,
+  },
+  plusOne: {
+    type: Boolean,
+    default: false
   }
 }, { collection: 'guests' });
 
