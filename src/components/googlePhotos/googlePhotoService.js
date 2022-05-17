@@ -1,10 +1,7 @@
-import axios from 'axios'
-
-console.log('test')
+import axios from "axios";
 
 const regex = /"(https:\/\/lh3\.googleusercontent\.com\/[a-zA-Z0-9\-_]*)"/g
 function extractPhotos(content) {
-  // console.log(content)
   const links = []
   let match
   while (match = regex.exec(content)) {
@@ -12,15 +9,11 @@ function extractPhotos(content) {
   } 
   return links
 }
+export default class GoogleService {
 
-async function getAlbum() {
-  const resp = await axios.get(`https://photos.app.goo.gl/1uxac6JSbtV3dMMaA`)
-  return extractPhotos(resp.data);
+  static async getAlbum(id) {
+    const resp = await axios.get(`https://photos.app.goo.gl/${id}`)
+    return extractPhotos(resp.data);
+  } 
+
 }
-
-async function test() {
-  const photos = await getAlbum()
-  console.log(photos)
-} 
-
-test()
