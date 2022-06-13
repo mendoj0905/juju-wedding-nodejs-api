@@ -49,4 +49,13 @@ export default class GuestController {
     const deleted_guest = await guestService.remove(req.body.email);
     res.json(deleted_guest);
   }
+
+  static async searchGuest(req, res) {
+    if (req.body.name && req.body.name.length > 1) {
+      const guests = await guestService.partialSearch(req.body.name);
+      res.json(guests)
+    } else {
+      res.json({ success: false });
+    }
+  }
 }
