@@ -11,6 +11,7 @@
   "author": "mendoj",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
@@ -18,7 +19,8 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
-    "axios": "^0.26.1"
+    "passport": "^0.5.3",
+    "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
     "csv-parser": "^3.0.0",

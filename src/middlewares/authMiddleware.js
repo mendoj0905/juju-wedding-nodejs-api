@@ -22,4 +22,16 @@ export default class authMiddleware {
 
     return next();
   }
+
+  static async googleAuth(passport) {
+    passport.serializeUser((user, done) => done(null, user));
+    passport.deserializeUser((user, done) => done(null, user));
+    passport.use(new GoogleOAuthStrategy(
+        {
+          clientID: process.env.GOOGLE_CLIENT_ID,
+          clientSecret: process.env.GOOGLE_CLIENT_ID,
+          callbackURL: ""
+        },
+        (token, refreshToken, profile, done) => done(null, {profile, token})));
+  }
 }
