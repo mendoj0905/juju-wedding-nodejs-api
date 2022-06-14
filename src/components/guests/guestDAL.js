@@ -26,6 +26,14 @@ export default class GuestDAL {
     }
   }
 
+  static async partialNameSearch(name) {
+    try {
+      return await Guest.find({ "name": { $regex: name }})
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   static async add(guest) {
     try {
       const { name } = guest;

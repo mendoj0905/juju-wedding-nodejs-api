@@ -99,4 +99,10 @@ export default class GuestService {
     
   }
 
+  static async partialSearch(name) {
+    const guests = await guestDAL.partialNameSearch(name)
+    console.log(`Found multiple guest`)
+    return guests
+  }
+
 }

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: wedding-guest-api
-        image: jujubeee314/wedding-guest-api:2022.6
+        image: jujubeee314/wedding-guest-api:2022.9
         resources: 
         imagePullPolicy: Always
         env:

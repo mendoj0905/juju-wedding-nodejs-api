@@ -10,5 +10,6 @@ router.delete('/', GuestController.remove);
 router.post('/search', GuestController.searchRsvp);
 router.patch('/rsvp', GuestController.updateRsvp);
 router.patch('/name', GuestController.updateRsvp);
+router.post('/v2/search', GuestController.searchGuest);
 
 export default router;
