@@ -4,3 +4,6 @@ secrets.yaml
 mongodb-temp
 docker-compose.yaml
 .vscode
+photos
+new_photos
+original_photos

@@ -14,6 +14,8 @@ const app = express();
 app.use(cors())
 app.use(BodyParser.json());
 
+app.use('/photos', express.static('./photos'))
+
 app.use('/api/auth', AuthRoutes);
 app.use('/api/password', WebPasswordRoutes);
 app.use('/api/guests', GuestRoute);
