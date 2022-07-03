@@ -2,13 +2,15 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 const PhotoSchema = new Schema ({
-  fileName: {
+  filename: {
     type: String,
     required: true
   },
-  contentType: {
-    type: String, 
-    required: true
+  src: {
+    type: String,
+  },
+  subheader: {
+    type: String
   },
   createDate: {
     type: Date,
@@ -19,11 +21,9 @@ const PhotoSchema = new Schema ({
   width: {
     type: Number,
   },
-  location: {
-    type: String
-  },
   wedding: {
     type: String,
+    required: true
   }
 }, { collection: 'photos'});
 
