@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nfs-wedding-nodejs-api  # < Name of the persistent volume
+  namespace: juju-wedding    
+spec:
+  storageClassName: ""
+  volumeName: pv-nfs-wedding-nodejs-api # < The volumename needs correpond with the persistent volume
+  accessModes:
+   - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

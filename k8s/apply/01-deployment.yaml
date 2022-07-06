@@ -14,11 +14,18 @@ spec:
       labels:
         app: node-app
     spec:
+      volumes:
+      - name: wedding-nodejs-api-volume
+        persistentVolumeClaim:
+          claimName: pvc-nfs-wedding-nodejs-api
       containers:
       - name: wedding-guest-api
         image: jujubeee314/wedding-guest-api:2022.9
         resources: 
         imagePullPolicy: Always
+        volumeMounts:
+          - mountPath: /usr/src/app/upload/photos
+            name: wedding-nodejs-api-volume
         env:
         - name: DB_URL
           valueFrom:
