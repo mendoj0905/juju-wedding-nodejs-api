@@ -20,7 +20,7 @@ spec:
           claimName: pvc-nfs-wedding-nodejs-api
       containers:
       - name: wedding-guest-api
-        image: jujubeee314/wedding-guest-api:2022.9
+        image: jujubeee314/wedding-guest-api:2022.12
         resources: 
         imagePullPolicy: Always
         volumeMounts:
