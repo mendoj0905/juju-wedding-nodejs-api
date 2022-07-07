@@ -36,7 +36,7 @@ export default class PhotoController {
   }
 
   static async updatePhoto(req, res) {
-    const photo = await PhotoDAL.update(req.body)
+    const photo = await photoDAL.update(req.body)
     res.json(photo)
   }
 }
