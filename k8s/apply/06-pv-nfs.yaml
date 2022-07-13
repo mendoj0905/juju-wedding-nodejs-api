@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs-wedding-nodejs-api  # < Name of the persistent volume
+  namespace: juju-wedding    
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 10Gi # < Maximum storage size you want to reserve
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    server: 192.168.1.226  # < The ip adress of your NAS (NFS Server)
+    path: "/volume2/kubedata/wedding-nodejs-api/upload/photos"  # < The NFS volumename 
+    readOnly: false

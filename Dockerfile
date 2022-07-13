@@ -5,7 +5,9 @@ ENV NODE_ENV production
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
+RUN mkdir -p ./upload/photos
+# RUN chown -R node:node /usr/src/app/upload
 RUN npm ci --only==production
-USER node
+# USER node
 
 CMD ["node", "src/server.js"]
